@@ -6,6 +6,5 @@ Measured was the importance of different metrics and the influence on different 
 
 All calculations were done by myself. Data was collected from Wyscout
 
-#packages needed
-irr
-readxl
+#packages needed:
+irr; readxl
