@@ -5,3 +5,7 @@ Thesis at VfB Stuttgart & University of Hohenheim: Data-based analysis of the po
 Measured was the importance of different metrics and the influence on different outcomes like goals, wins and more. 
 
 All calculations were done by myself. Data was collected from Wyscout
+
+#packages needed
+irr
+readxl
