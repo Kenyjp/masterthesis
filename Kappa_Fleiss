@@ -1,0 +1,17 @@
+#The Kappa Fleiss calculations are used to calculate the experts' agreement on the questions of the questionnaire
+#The Questionnaire asked 6 coaches of VfB Stuttgart, which metrics they think are the most important ones for a left wing-back in a 3-4-2-1 system
+#All coaches are at the UEFA pro level and have worked at least for 6 years at the club and are active coaches for at least 4 years
+
+#Read in the data set were the answers of the raters are
+
+library(readxl)
+Auswertung_Fragebogen_Kenny_ICC_Grundlage_bereinigt <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Auswertung Fragebogen Kenny ICC Grundlage bereinigt.xlsx")
+View(Auswertung_Fragebogen_Kenny_ICC_Grundlage_bereinigt)
+
+ICC <- Auswertung_Fragebogen_Kenny_ICC_Grundlage_bereinigt
+
+#package irr needed to perform the kappa fleiss test
+
+install.packages(irr)
+library(irr)
+kappam.fleiss(ICC[,-1])
