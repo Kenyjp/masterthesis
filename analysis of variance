@@ -1,1 +1,51 @@
+#For the analysis of variance the excel data of "Sosa relevant normiert" and "LV u19 relevant normiert" was used.
+
+
+#Load data of "Sosa"
+library(readxl)
+Sosa_relevant_normiert <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
+View(Sosa_relevant_normiert)
+
+
+#Create boxplots for the visualization & save them
+boxplot(SosaRN$`D-erf`, SosaRN$`%D`, SosaRN$`%F`, SosaRN$`%Z`, SosaRN$`%1/3`, SosaRN$`%Box`, names = c("Erfolgreiche Dribblings", "Erfolgsquote Dribblings", "Erfolgsquote Flanken", "Erfolgsquote Zweikampf", "Erfolgsquote Pässe ins letzte Drittel", "Erfolgsquote Pässe in den Strafraum")) 
+boxplot(SosaRN$VoEff, xlab = "Vorlageneffizienz") 
+
+
+#Calculate mean, trimmed means, median, variance and standard deviation
+mapply(mean, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)] 
+mapply(median, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)])
+mapply(mean, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)], trim = 0.1)
+mapply(mean, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)], trim = 0.2)
+mapply(mean, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)], trim = 0.05)
+mapply(var, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)])
+mapply(sd, Sosa_relevant_normiert[,c(9, 11, 12, 15, 17, 20, 23)])
+
+
+#Load data of "U19"
+library(readxl)
+LV_u19_relevant_normiert <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/LV u19 relevant normiert.xlsx") 
+View(LV_u19_relevant_normiert)
+
+
+#Create boxplots for the visualization & save them
+boxplot(LV_u19_relevant_normiert$Derfolg, LV_u19_relevant_normiert$`%D`, LV_u19_relevant_normiert$`%F`, LV_u19_relevant_normiert$`%Z`, LV_u19_relevant_normiert$`%1/3`, LV_u19_relevant_normiert$`%Box`, names = c("Erfolgreiche Dribblings", "Erfolgsquote Dribblings", "Erfolgsquote Flanken", "Erfolgsquote Zweikampf", "Erfolgsquote Pässe ins letzte Drittel", "Erfolgsquote Pässe in den Strafraum"))
+boxplot(LV_u19_relevant_normiert$VoEff, xlab ="Vorlageneffizienz")
+
+
+#Calculate mean, trimmed means, median, variance and standard deviation
+mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)])
+mapply(var, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)])
+mapply(median, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)])
+mapply(sd, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)])
+mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.05)
+mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.1)
+mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.2)
+
+
+
+
+
+
+  
 
