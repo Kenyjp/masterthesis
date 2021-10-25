@@ -10,4 +10,4 @@ For the analysis of variance the excel data of "Sosa relevant normiert" and "LV 
 All calculations were done by myself. Data was collected from Wyscout.
 
 #packages needed:
-irr; readxl; lawstat; car
+irr; readxl; lawstat; car; dyplr
