@@ -6,6 +6,7 @@ library(readxl)
 Sosa_relevant_normiert <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
 View(Sosa_relevant_normiert)
 
+SosaRN <- Sosa_relevant_normiert
 
 #Create boxplots for the visualization & save them
 boxplot(SosaRN$`D-erf`, SosaRN$`%D`, SosaRN$`%F`, SosaRN$`%Z`, SosaRN$`%1/3`, SosaRN$`%Box`, names = c("Erfolgreiche Dribblings", "Erfolgsquote Dribblings", "Erfolgsquote Flanken", "Erfolgsquote Zweikampf", "Erfolgsquote Pässe ins letzte Drittel", "Erfolgsquote Pässe in den Strafraum")) 
@@ -41,6 +42,17 @@ mapply(sd, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)])
 mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.05)
 mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.1)
 mapply(mean, LV_u19_relevant_normiert[,c(7, 9, 10, 13, 15, 18, 21)], trim = 0.2)
+
+
+#Tests for normality
+shapiro.test(SosaRN$`D-erf`)
+shapiro.test(SosaRN$VoEff)
+shapiro.test(SosaRN$`%F`)
+shapiro.test(SosaRN$`%D`)
+shapiro.test(SosaRN$`%Z`)
+shapiro.test(SosaRN$`%1/3`)
+shapiro.test(SosaRN$`%Box`)
+
 
 
 
