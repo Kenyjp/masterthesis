@@ -1,0 +1,56 @@
+#To analyze the importance of the chosen metrics a linear regression model is used
+#To test wether the strength of the other team has an influence on the outcome a dummy variable called Stärke des Gegners was used. This dummy consists of the points per game of the other team.
+#First the data of Sosa is analyzed
+
+library(readxl)
+SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
+View(SosaRN)
+
+#Measure influence of metrics on the points that are earned in one game
+lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the goals scored
+lm(SosaRN$Tore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+lm(SosaRN$Tore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the goals conceded
+lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the expected goals scored
+lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the amount of shots of the team
+lm(SosaRN$Schüsse ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+lm(SosaRN$Schüsse ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+
+#Now the data of U19 players are analyzed
+library(readxl)
+LV <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/LV u19 relevant normiert.xlsx")
+View(LV)
+
+
+#Measure influence of metrics on the points that are earned in one game
+lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the goals scored
+lm(LV$Tore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+lm(LV$Tore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the goals conceded
+lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+
+
+#Measure influence of the metrics on the expected goals scored
+lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+
+#Measure influence of the metrics on the amount of shots of the team
+lm(LV$Schüsse ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+lm(LV$Schüsse ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+
+
