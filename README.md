@@ -6,6 +6,7 @@ Measured was the importance of different metrics and the influence on different 
 
 To calculate the intercorrelation coefficient, the Kappa Fleiss test was applied to the data in the file "Auswertung Fragebogen Kenny ICC".
 For the analysis of variance the excel data of "Sosa relevant normiert", "LV u19 relevant normiert" and "Spielervergleich normierte Daten" was used.
+To analyze the importance of the chosen metrics and their impact on a positive outcome of the game, a regression model is used. 
 
 All calculations were done by myself. Data was collected from Wyscout.
 
