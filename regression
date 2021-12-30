@@ -6,23 +6,29 @@ library(readxl)
 SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
 View(SosaRN)
 
+#First without Bootstrapping
 #Measure influence of metrics on the points that are earned in one game
+summary(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the goals scored
+summary(lm(SosaRN$Tore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Tore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Tore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the goals conceded
+summary(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the expected goals scored
+summary(lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the amount of shots of the team
+summary(lm(SosaRN$Schüsse ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Schüsse ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
 summary(lm(SosaRN$Schüsse ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
 
@@ -33,23 +39,28 @@ View(LV)
 
 
 #Measure influence of metrics on the points that are earned in one game
+summary(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the goals scored
+summary(lm(LV$Tore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Tore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Tore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the goals conceded
+summary(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
 
 
 #Measure influence of the metrics on the expected goals scored
+summary(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
 
 #Measure influence of the metrics on the amount of shots of the team
+summary(lm(LV$Schüsse ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Schüsse ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
 summary(lm(LV$Schüsse ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
 
