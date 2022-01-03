@@ -1,0 +1,153 @@
+#Load the data of Borna Sosa
+library(readxl)
+SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
+View(SosaRN)
+
+#Load car package for bootstrap function
+library(car)
+
+#Create linear regression model of the offensive metrics on points
+sosa.off <- lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`)
+summary(sosa.off)
+
+#Set seed and system time for reproducability and create the bootstrap model with 1000 repetitions
+set.seed(12345)
+system.time(sosa.off.boot <- Boot(sosa.off, R = 1000))
+summary(sosa.off.boot)
+
+#Same procedure for LM model of all metrics on points
+sosa.all <- lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`) 
+summary(sosa.all)
+set.seed(12345)
+system.time(sosa.all.boot <- Boot(sosa.all, R = 1000))
+summary(sosa.all.boot)
+
+#Bootsrap final LM Model on points
+sosa.final <- lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+summary(sosa.final)
+set.seed(12345)
+system.time(sosa.final.boot <- Boot(sosa.final, R = 1000))
+summary(sosa.final.boot) 
+------------------------------------------------------ NA values
+
+#Bootsrap def on xG Sosa
+#Need new dataset due to missing xG values
+library(readxl)
+SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiertxG.xlsx")
+View(SosaRN)
+sosa.xG1 <- lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`)
+summary(sosa.xG1) 
+set.seed(12345)
+system.time(sosa.xG1.boot <- Boot(sosa.xG1, R = 1000))
+summary(sosa.xG1.boot)
+
+#Bootstrap all on xG Sosa
+sosa.xG2 <- lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`) 
+summary(sosa.xG2)
+set.seed(12345)
+system.time(sosa.xG2.boot <- Boot(sosa.xG2, R = 1000))
+summary(sosa.xG2.boot)
+
+#Bootstrap final on xG Sosa
+sosa.xG3 <- lm(SosaRN$`Erwartete Tore` ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+summary(sosa.xG3)
+set.seed(12345)
+system.time(sosa.xG3.boot <- Boot(sosa.xG3, R = 1000))
+summary(sosa.xG3.boot)
+------------------------------------NA
+
+#Bootstrap def on Goals concedes Sosa
+#Load new data
+library(readxl)
+SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
+View(SosaRN)
+sosa.GG1 <- lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`)
+summary(sosa.GG1)
+set.seed(12345)
+system.time(sosa.GG1.boot <- Boot(sosa.GG1, R = 1000))
+summary(sosa.GG1.boot)
+
+#Bootstrap all on Goals conceded sosa
+sosa.GG2 <- lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`)
+summary(sosa.GG2)
+set.seed(12345)
+system.time(sosa.GG2.boot <- Boot(sosa.GG2, R = 1000))
+summary(sosa.GG2.boot)
+
+#Bootstrap final on goals conceded sosa
+sosa.GG3 <- lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`)
+summary(sosa.GG3)
+set.seed(12345)
+system.time(sosa.GG3.boot <- Boot(sosa.GG3, R = 1000))
+summary(sosa.GG3.boot)
+-----------------------------------NA
+
+#Now bootstrap U19 def on points
+#Load data
+library(readxl)
+LV <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/LV u19 relevant normiert.xlsx")
+View(LV)
+LVp1 <- lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`)
+summary(LVp1)
+set.seed(12345)
+system.time(LVp1.boot <- Boot(LVp1, R = 1000))
+summary(LVp1.boot)
+
+#Bootstrap all on points u19
+LVp2 <- lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+summary(LVp2)
+set.seed(12345)
+system.time(LVp2.boot <- Boot(LVp2, R = 1000))
+summary(LVp2.boot)
+
+#Bootstrap final on points
+LVp3 <- lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+summary(LVp3)
+set.seed(12345)
+system.time(LVp3.boot <- Boot(LVp3, R = 1000))
+summary(LVp3.boot)
+-----------------------NA
+
+#Bootstrap def on goals conceded u19
+LVGG1 <- lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`)
+summary(LVGG1)
+set.seed(12345)
+system.time(LVGG1.boot <- Boot(LVGG1, R = 1000))
+summary(LVGG1.boot)
+
+#Bootstrap all on goals conceded u19
+LVGG2 <- lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+summary(LVGG2)
+set.seed(12345)
+system.time(LVGG2.boot <- Boot(LVGG2, R = 1000))
+summary(LVGG2.boot)
+
+#Bootstrap final on goals conceded u19
+LVGG3 <- lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+summary(LVGG3)
+set.seed(12345)
+system.time(LVGG3.boot <- Boot(LVGG3, R = 1000))
+summary(LVGG3.boot) 
+-------------------------------NA
+
+#Bootstrap def on xG U19
+LVxG1 <- lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`)
+summary(LVxG1)
+set.seed(12345)
+system.time(LVxG1.boot <- Boot(LVxG1, R =1000))
+summary(LVxG1.boot)
+
+#Boostrap all on xG U19
+LVxG2 <- lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`)
+summary(LVxG2)
+set.seed(12345)
+system.time(LVxG2.boot <- Boot(LVxG2, R =1000))
+summary(LVxG2.boot)
+
+#Bootstrap final on xG U19
+LVxG3 <- lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`)
+summary(LVxG3)
+set.seed(12345)
+system.time(LVxG3.boot <- Boot(LVxG3, R =1000))
+summary(LVxG3.boot)
+-----------------------------------------------NA
