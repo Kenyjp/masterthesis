@@ -28,7 +28,6 @@ summary(sosa.final)
 set.seed(12345)
 system.time(sosa.final.boot <- Boot(sosa.final, R = 1000))
 summary(sosa.final.boot) 
------------------------------------------------------- NA values
 
 #Bootsrap def on xG Sosa
 #Need new dataset due to missing xG values
@@ -54,9 +53,8 @@ summary(sosa.xG3)
 set.seed(12345)
 system.time(sosa.xG3.boot <- Boot(sosa.xG3, R = 1000))
 summary(sosa.xG3.boot)
-------------------------------------NA
 
-#Bootstrap def on Goals concedes Sosa
+#Bootstrap def on Goals conceded Sosa
 #Load new data
 library(readxl)
 SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
@@ -80,7 +78,6 @@ summary(sosa.GG3)
 set.seed(12345)
 system.time(sosa.GG3.boot <- Boot(sosa.GG3, R = 1000))
 summary(sosa.GG3.boot)
------------------------------------NA
 
 #Now bootstrap U19 def on points
 #Load data
@@ -106,7 +103,6 @@ summary(LVp3)
 set.seed(12345)
 system.time(LVp3.boot <- Boot(LVp3, R = 1000))
 summary(LVp3.boot)
------------------------NA
 
 #Bootstrap def on goals conceded u19
 LVGG1 <- lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`)
@@ -128,7 +124,6 @@ summary(LVGG3)
 set.seed(12345)
 system.time(LVGG3.boot <- Boot(LVGG3, R = 1000))
 summary(LVGG3.boot) 
--------------------------------NA
 
 #Bootstrap def on xG U19
 LVxG1 <- lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`)
@@ -150,4 +145,4 @@ summary(LVxG3)
 set.seed(12345)
 system.time(LVxG3.boot <- Boot(LVxG3, R =1000))
 summary(LVxG3.boot)
------------------------------------------------NA
+
