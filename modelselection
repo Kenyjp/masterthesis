@@ -1,0 +1,43 @@
+#Calculate fit of model with AIC
+#load packages and data
+
+library(stats)
+library(readxl)
+SosaRN <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiert.xlsx")
+View(SosaRN)
+library(readxl)
+LV <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/LV u19 relevant normiert.xlsx")
+View(LV)
+library(readxl)
+SosaRN1 <- read_excel("Online-Uni/Hohenheim/Masterarbeit VfB/Daten/Sosa relevant normiertxG.xlsx")
+View(SosaRN1)
+
+#Perform AIC on Sosa points
+AIC(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
+AIC(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
+AIC(lm(SosaRN$Punkte ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
+
+#Perform AIC on Sosa xG
+AIC(lm(SosaRN1$`Erwartete Tore` ~ SosaRN1$`D-erf` + SosaRN1$`%D` + SosaRN1$VoEff + SosaRN1$`%F` + SosaRN1$`%1/3` + SosaRN1$`%Box`))
+AIC(lm(SosaRN1$`Erwartete Tore` ~ SosaRN1$`D-erf` + SosaRN1$`%D` + SosaRN1$VoEff + SosaRN1$`%F` + SosaRN1$`%Z` + SosaRN1$`%1/3` + SosaRN1$`%Box`))
+AIC(lm(SosaRN1$`Erwartete Tore` ~ SosaRN1$`D-erf` + SosaRN1$`%D` + SosaRN1$VoEff + SosaRN1$`%F` + SosaRN1$`%Z` + SosaRN1$`%1/3` + SosaRN1$`%Box` + SosaRN1$`Stärke des Gegners`))
+
+#Perform AIC on Sosa conceded goals
+AIC(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%1/3` + SosaRN$`%Box`))
+AIC(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box`))
+AIC(lm(SosaRN$Gegentore ~ SosaRN$`D-erf` + SosaRN$`%D` + SosaRN$VoEff + SosaRN$`%F` + SosaRN$`%Z` + SosaRN$`%1/3` + SosaRN$`%Box` + SosaRN$`Stärke des Gegners`))
+
+#Perform AIC on U19 points
+AIC(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$Punkte ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
+
+#Perform AIC on U19 xG
+AIC(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$`Erwartete Tore` ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
+
+#Perform AIC on U19 conceded goals
+AIC(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box`))
+AIC(lm(LV$Gegentore ~ LV$Derfolg + LV$VoEff + LV$`%F` + LV$`%D` + LV$`%Z` +LV$`%1/3` + LV$`%Box` + LV$`Stärke des Gegners`))
