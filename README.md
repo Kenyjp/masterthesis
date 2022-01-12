@@ -15,4 +15,4 @@ All preconditions were analyzed before and can be seen in the respective categor
 All calculations were done by myself. Data was collected from Wyscout.
 
 #packages needed:
-irr; readxl; lawstat; car; dyplr; stats; ggplot
+irr; readxl; lawstat; car; dyplr; stats; ggplot; effectsize
