@@ -85,6 +85,17 @@ t.test(SV$`Quote 1/3`, SV$`Quote 1/32`)
 t.test(SV$`%F`, SV$`Quote F2`)
 t.test(SV$`Quote Box`, SV$`Quote Box2`)
 
+#Test effect size of T-test
+library(effectsize)
+cohens_d(SV$`D-erf`, SV$Dribbeln2, data = SV)
+cohens_d(SV$`Quote D`, SV$`Quote D2`, data = SV)
+cohens_d(SV$`Quote Z`, SV$`Quote Z2`, data = SV)
+cohens_d(SV$VoEff, SV$VoEff2, data = SV)
+cohens_d(SV$`Quote 1/3`, SV$`Quote 1/32`, data = SV)
+cohens_d(SV$`%F`, SV$`Quote F2`, data = SV)
+cohens_d(SV$`Quote Box`, SV$`Quote Box2`, data = SV)
+
+
 chisq.test(SV$`D-erf`,SV$Derfolg2)
 chisq.test(SV$`Quote D`, SV$`Quote D2`)
 chisq.test(SV$`Quote Z`,SV$`Quote Z2`)
