@@ -104,6 +104,14 @@ chisq.test(SV$`Quote 1/3`, SV$`Quote 1/32`)
 chisq.test(SV$`Quote Box`, SV$`Quote Box2`)
 chisq.test(SV$`%F`, SV$`Quote F2`)
 
+#Critical chi-squared values
+qchisq(0.05, 195, lower.tail = FALSE)
+qchisq(0.05, 180, lower.tail = FALSE)
+qchisq(0.05, 14, lower.tail = FALSE)
+qchisq(0.05, 272, lower.tail = FALSE)
+qchisq(0.05, 255, lower.tail = FALSE)
+qchisq(0.05, 238, lower.tail = FALSE)
+
 #Cramers V to indicate effect size of Chi-square test
 cramers_v(chisq.test(SV$`D-erf`,SV$Derfolg2))
 cramers_v(chisq.test(SV$`Quote D`, SV$`Quote D2`))
